@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Deal, DealStage, User, ChatMessage } from '../types';
-import { Send, Paperclip, CheckCircle, Clock, FileText, AlertCircle } from 'lucide-react';
+import { Send, Paperclip, CheckCircle, Clock, FileText, AlertCircle, Package } from 'lucide-react';
 
 interface DealRoomProps {
   deal: Deal;
@@ -104,6 +104,28 @@ const DealRoom: React.FC<DealRoomProps> = ({ deal, currentUser, onBack }) => {
 
         {/* Right: Deal Info & Actions */}
         <div className="w-full lg:w-80 flex flex-col gap-4 overflow-y-auto">
+          
+          {/* Deal Details Summary */}
+          <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+             <h3 className="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wider flex items-center gap-2">
+                <Package size={16} /> Deal Specifics
+             </h3>
+             <div className="space-y-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                <div className="flex justify-between items-center border-b border-slate-200 pb-2">
+                   <span className="text-xs text-slate-500 font-medium">Quantity</span>
+                   <span className="text-sm font-bold text-slate-900">{deal.quantity}</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-slate-200 pb-2">
+                   <span className="text-xs text-slate-500 font-medium">Commodity</span>
+                   <span className="text-sm font-bold text-slate-900">{deal.commodity}</span>
+                </div>
+                 <div className="flex justify-between items-center">
+                   <span className="text-xs text-slate-500 font-medium">Est. Value</span>
+                   <span className="text-sm font-bold text-slate-900">{deal.value > 0 ? `$${deal.value.toLocaleString()}` : 'TBD'}</span>
+                </div>
+             </div>
+          </div>
+
           {/* Progress */}
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
             <h3 className="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider">Milestones</h3>

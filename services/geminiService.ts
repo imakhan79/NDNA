@@ -4,7 +4,7 @@ const getAiClient = () => {
   // NOTE: In a real app, this key comes from env. 
   // For this demo structure, we assume process.env.API_KEY is available or handled by the environment.
   // We use a fallback if not present for safety in dev, but prompt instructions say rely on process.env.
-  return new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  return new GoogleGenAI({ apiKey: process.env.API_KEY });
 };
 
 export const analyzeDocumentForFraud = async (docName: string, docType: string, mockContentContext: string): Promise<{ status: 'Approved' | 'Flagged', reason: string }> => {
